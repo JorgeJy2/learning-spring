@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-   <bean id="mundo" class="com.jorgejy.beans.Mundo">
-    <property name="saludo" value="Hola mundo!"></property>
-   </bean>
+	<bean id="mundo" class="com.jorgejy.beans.Mundo">
+		<property name="saludo" value="Hola mundo!"></property>
+	</bean>
 
+	<bean id="persona" class="com.jorgejy.beans.Persona"
+		name="personaName">
+		<constructor-arg index="0" value="1"></constructor-arg>
+		<constructor-arg index="2" value="JorgeJy2"></constructor-arg>
+		<constructor-arg index="1" value="Jorge"></constructor-arg>
+		<property name="pais" ref="pais"></property>
+	</bean>
+
+	<bean id="pais" class="com.jorgejy.beans.Pais">
+		<property name="nombre" value="México"></property>
+		<property name="ciudad">
+			<list>
+				<ref bean="ciudad1"/>
+				<ref bean="ciudad2"/>
+				<ref bean="ciudad3"/>
+			</list>
+		</property>	
+	</bean>
+	<bean id="ciudad1" class="com.jorgejy.beans.Ciudad">
+		<property name="nombre" value="CDMX"></property>
+	</bean>
+	<bean id="ciudad2" class="com.jorgejy.beans.Ciudad">
+		<property name="nombre" value="Estado de México"></property>
+	</bean>
+	<bean id="ciudad3" class="com.jorgejy.beans.Ciudad">
+		<property name="nombre" value="Tijuana"></property>
+	</bean>
+	<alias name="persona" alias="personita" />
 </beans>
