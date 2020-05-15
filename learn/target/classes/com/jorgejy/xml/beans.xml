@@ -10,6 +10,9 @@
 		 default-init-method="init" default-destroy-method="destroy"
 	  -->
 
+	<!-- Use BeanPostProcessor -->
+	<bean class="com.jorgejy.beans.JorgeBeanProcessor"></bean>
+
 	<bean id="mundo" class="com.jorgejy.beans.Mundo">
 		<property name="saludo" value="Hola mundo!"></property>
 	</bean>

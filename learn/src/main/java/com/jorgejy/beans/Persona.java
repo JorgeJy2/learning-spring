@@ -3,7 +3,10 @@ package com.jorgejy.beans;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-public class Persona {
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class Persona implements InitializingBean, DisposableBean  {
 
 	private int id;
 	private String nombre;
@@ -12,14 +15,14 @@ public class Persona {
 	
 	private Ciudad ciudad;
 	
-	@PostConstruct
-	private void init() {
-		System.out.println("Antes de iniciar el bean");
-	}
-	@PreDestroy
-	private void destroy() {
-		System.out.println("Antes de destruir al bean");
-	}
+//	@PostConstruct
+//	private void init() {
+//		System.out.println("Antes de iniciar el bean");
+//	}
+//	@PreDestroy
+//	private void destroy() {
+//		System.out.println("Antes de destruir al bean");
+//	}
 	
 	
 	public Persona() {
@@ -79,6 +82,16 @@ public class Persona {
 
 	public void setApodo(String apodo) {
 		this.apodo = apodo;
+	}
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("After start constructor");
+	}
+
+	@Override
+	public void destroy() throws Exception {
+		System.out.println("Pre destroy constructor");
+		
 	}
 	
 	
