@@ -2,14 +2,39 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+        
+        >
+
+	<!-- Global method init and destroy
+		 default-init-method="init" default-destroy-method="destroy"
+	  -->
 
 	<bean id="mundo" class="com.jorgejy.beans.Mundo">
 		<property name="saludo" value="Hola mundo!"></property>
 	</bean>
+	
+	<!-- User @PostConstruct and @@PreDestroy -->
+	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>
 
-	<bean id="persona" class="com.jorgejy.beans.Persona"
-		name="personaName">
+	<!-- Scope singleton || prototype default singleton  -->
+	<!-- Lazy Loading 
+			When the application load all bean is load if are scope singleton
+			prototype use lazy load
+			
+			lazy-init="true"
+			only load when is require. 
+			
+			when use beanFacory all OBJ are lazy load
+	  -->
+	  
+	    <!-- Subscribe init method and destroy method
+	    	bean local 
+	    		init-method="init" destroy-method="destroy"
+	     -->
+	<bean id="persona" class="com.jorgejy.beans.Persona" name="personaName" 
+		autowire="byName" scope="singleton" lazy-init="true"
+	>
 		<constructor-arg index="0" value="1"></constructor-arg>
 		<constructor-arg index="2" value="JorgeJy2"></constructor-arg>
 		<constructor-arg index="1" value="Jorge"></constructor-arg>
@@ -34,6 +59,10 @@
 	</bean>
 	<bean id="ciudad3" class="com.jorgejy.beans.Ciudad">
 		<property name="nombre" value="Tijuana"></property>
+	</bean>
+	
+	<bean id="ciudad" class="com.jorgejy.beans.Ciudad">
+		<property name="nombre" value="CDMX"></property>
 	</bean>
 	<alias name="persona" alias="personita" />
 </beans>

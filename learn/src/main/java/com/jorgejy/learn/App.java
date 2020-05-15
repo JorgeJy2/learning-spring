@@ -38,15 +38,25 @@ public class App {
 		ApplicationContext appContext = new ClassPathXmlApplicationContext("com/jorgejy/xml/beans.xml");
 		// Persona persona  = (Persona) appContext.getBean(Persona.class); // Get by nameClass
 		Persona persona  = (Persona) appContext.getBean("personaName"); // Get by name or alias
+		Persona personaDos  = (Persona) appContext.getBean("personaName"); // Get by name or alias
+		
+		Ciudad ciudad = (Ciudad) appContext.getBean("ciudad");
+		
+		System.out.println(ciudad.getNombre());
 		
 		String nombresCiudades = "";
+		// Example using scope singleton in pom.xml
+		System.out.println(persona);
+		System.out.println(personaDos);
 		
-		for(Ciudad ciudad: persona.getPais().getCiudades()) {
-			nombresCiudades += ","+ ciudad.getNombre();
-		}
+//		for(Ciudad ciudad: persona.getPais().getCiudades()) {
+//			nombresCiudades += ","+ ciudad.getNombre();
+//		}
 		
-		System.out.println(persona.getId()+" "+persona.getNombre()+ " "+persona.getApodo() + "/ "+persona.getPais().getNombre() +"-"+nombresCiudades);
+		System.out.println(persona.getId()+" "+persona.getNombre()+ " "+persona.getApodo() + "/ "+persona.getPais().getNombre() +"-"+nombresCiudades+ " .-. "+persona.getCiudad().getNombre());
+		System.out.println(personaDos.getId()+" "+personaDos.getNombre()+ " "+personaDos.getApodo() + "/ "+personaDos.getPais().getNombre() +"-"+nombresCiudades+ " .-. "+personaDos.getCiudad().getNombre());
 		
+		((ConfigurableApplicationContext) appContext).close();
 	}	
 	
 }

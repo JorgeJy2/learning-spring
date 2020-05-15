@@ -1,5 +1,8 @@
 package com.jorgejy.beans;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 public class Persona {
 
 	private int id;
@@ -7,6 +10,30 @@ public class Persona {
 	private String apodo;
 	private Pais pais;
 	
+	private Ciudad ciudad;
+	
+	@PostConstruct
+	private void init() {
+		System.out.println("Antes de iniciar el bean");
+	}
+	@PreDestroy
+	private void destroy() {
+		System.out.println("Antes de destruir al bean");
+	}
+	
+	
+	public Persona() {
+		System.out.println("Constructor");
+	}
+	
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
+	}
+
 	public Pais getPais() {
 		return pais;
 	}
