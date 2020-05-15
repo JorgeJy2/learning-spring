@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
-        
-        >
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
 
+ 
+	<!-- Use @Required Background-->
+	<!-- 	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"></bean>  -->
+	<!-- use @Autowired Background -->
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>	 -->
+
+
+	 <context:annotation-config/>
 	<!-- Global method init and destroy
 		 default-init-method="init" default-destroy-method="destroy"
 	  -->
@@ -13,10 +22,13 @@
 	<!-- Use BeanPostProcessor -->
 	<bean class="com.jorgejy.beans.JorgeBeanProcessor"></bean>
 
+	<!-- 
+	
 	<bean id="mundo" class="com.jorgejy.beans.Mundo">
 		<property name="saludo" value="Hola mundo!"></property>
 	</bean>
 	
+	 -->
 	<!-- User @PostConstruct and @@PreDestroy -->
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"></bean>
 
@@ -68,4 +80,20 @@
 		<property name="nombre" value="CDMX"></property>
 	</bean>
 	<alias name="persona" alias="personita" />
+	
+	
+	<bean id="messi" class="com.jorgejy.beans.Jugador">
+		<property name="numero" value="10"></property>
+		<property name="nombre" value="Leonel messi"></property>
+		<!-- Use @Autowired -->
+		<!-- <property name="equipo" ref="barcelona"></property> -->	
+		
+	</bean>
+	
+	<!-- Use quelifier add  xmlns:context="http://www.springframework.org/schema/context"  -->
+	<bean id="juventus" class="com.jorgejy.beans.Juventus"></bean>
+	<bean id="bercelona" class="com.jorgejy.beans.Barcelona">
+		<qualifier value="barcelonaQualifier"></qualifier>
+	</bean>
+	
 </beans>

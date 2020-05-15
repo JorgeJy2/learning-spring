@@ -7,9 +7,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.jorgejy.beans.AppConfig;
 import com.jorgejy.beans.AppConfig2;
+import com.jorgejy.beans.Barcelona;
 import com.jorgejy.beans.Ciudad;
+import com.jorgejy.beans.Jugador;
 import com.jorgejy.beans.Mundo;
 import com.jorgejy.beans.Persona;
+import com.jorgejy.interfaces.Equipo;
 
 public class App {
 
@@ -55,6 +58,16 @@ public class App {
 		
 		System.out.println(persona.getId()+" "+persona.getNombre()+ " "+persona.getApodo() + "/ "+persona.getPais().getNombre() +"-"+nombresCiudades+ " .-. "+persona.getCiudad().getNombre());
 		System.out.println(personaDos.getId()+" "+personaDos.getNombre()+ " "+personaDos.getApodo() + "/ "+personaDos.getPais().getNombre() +"-"+nombresCiudades+ " .-. "+personaDos.getCiudad().getNombre());
+		
+	
+		Jugador messi = (Jugador) appContext.getBean("messi");
+		System.out.println(messi.getNombre() + " "+messi.getNumero() + " " + messi.getEquipo().mostrar());
+		
+		
+		// dynamic class
+		Equipo equipo = (Equipo) appContext.getBean("juventus");
+		
+		System.out.println(equipo.mostrar());
 		
 		((ConfigurableApplicationContext) appContext).close();
 	}	
