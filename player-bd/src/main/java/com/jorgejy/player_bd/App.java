@@ -6,9 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.jorgejy.beans.Brand;
 import com.jorgejy.beans.Player;
 import com.jorgejy.beans.Team;
-import com.jorgejy.services.ServicesBrand;
 import com.jorgejy.services.ServicesPlayer;
-import com.mysql.cj.util.DnsSrv.SrvRecord;
 
 /**
  * Hello world!
