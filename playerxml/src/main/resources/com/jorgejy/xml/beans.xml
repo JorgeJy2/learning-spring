@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+   
+   <bean id="barcelona" class="com.jorgejy.beans.Barcelona">
+   		<property name="id" value="1"></property>
+   		<property name="name" value="Barcelona"></property>
+   </bean>
+   
+   
+   <bean id="juventus" class="com.jorgejy.beans.Juventus">
+   		<property name="id" value="1"></property>
+   		<property name="name" value="Juventus"></property>
+   </bean>
+   
+   <bean id="brand" class="com.jorgejy.beans.Brand">
+   		<property name="id" value="1"></property>
+   		<property name="name" value="Lacoste"></property>
+   </bean>
+   
+     <bean id="shirt" class="com.jorgejy.beans.Shirt">
+   		<property name="id" value="1"></property>
+   		<property name="number" value="10"></property>
+   		<property name="brand" ref="brand"></property>
+   </bean>
+   
+   <bean id="player" class="com.jorgejy.beans.Player">
+   		<property name="id" value="1"></property>
+   		<property name="name" value="jorge"></property>
+   		<property name="team" ref="juventus"></property>
+   		<property name="shirt" ref="shirt"></property>
+   </bean>
+ </beans>
