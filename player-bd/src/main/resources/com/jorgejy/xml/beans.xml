@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+   
+   <context:component-scan base-package="com.jorgejy"></context:component-scan>
+   
+   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+   		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+   		<property name="url" value="jdbc:mysql://localhost:3306/player"></property>
+   		<property name="username" value="root"></property>
+   		<property name="password" value="password"></property>
+   </bean>
+   
+    <bean id="sportJeans" class="com.jorgejy.beans.Brand">
+   		<property name="id" value="2"></property>
+   		<property name="name" value="Sport Jeans"></property>
+   </bean>
+   
+   
+    <bean id="barcelona" class="com.jorgejy.beans.Team">
+   		<property name="id" value="1"></property>
+   		<property name="name" value="Barcelona"></property>
+   </bean>
+   
+   
+    <bean id="shirt" class="com.jorgejy.beans.Shirt">
+   		<property name="id" value="1"></property>
+   		<property name="number" value="10"></property>
+   		<property name="brand" ref="sportJeans"></property>
+   </bean>
+   
+   
+   
+    <bean id="player" class="com.jorgejy.beans.Player">
+   		<property name="id" value="1"></property>
+   		<property name="name" value="Jorge"></property>
+   		<property name="team" ref="barcelona"></property>
+   		<property name="shirt" ref="shirt"></property>
+   </bean>
+   
+   
+  
+ </beans>

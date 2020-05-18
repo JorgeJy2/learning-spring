@@ -1,14 +1,9 @@
 package com.jorgejy.beans;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
-@Component
-public class Brand {
+public class Team{
 
-	@Value("Levis")
 	private String name;
-	@Value("3")
 	private int id;
 	
 	public String getName() {
