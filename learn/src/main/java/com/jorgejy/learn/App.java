@@ -65,7 +65,7 @@ public class App {
 		
 		
 		// dynamic class
-		Equipo equipo = (Equipo) appContext.getBean("juventus");
+		Equipo equipo = (Equipo) appContext.getBean("barcelona");
 		
 		System.out.println(equipo.mostrar());
 		

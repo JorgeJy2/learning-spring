@@ -14,7 +14,11 @@
 	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>	 -->
 
 
+	<!-- Only annotation JSR-250 
+		@Autowire
+		@Qualifier
 	 <context:annotation-config/>
+	 -->
 	<!-- Global method init and destroy
 		 default-init-method="init" default-destroy-method="destroy"
 	  -->
@@ -22,11 +26,15 @@
 	<!-- Use BeanPostProcessor -->
 	<bean class="com.jorgejy.beans.JorgeBeanProcessor"></bean>
 
+	<context:component-scan base-package="com.jorgejy.beans"></context:component-scan>
+
 	<!-- 
 	
 	<bean id="mundo" class="com.jorgejy.beans.Mundo">
 		<property name="saludo" value="Hola mundo!"></property>
 	</bean>
+	
+	
 	
 	 -->
 	<!-- User @PostConstruct and @@PreDestroy -->
@@ -82,18 +90,19 @@
 	<alias name="persona" alias="personita" />
 	
 	
-	<bean id="messi" class="com.jorgejy.beans.Jugador">
+<!-- 	<bean id="messi" class="com.jorgejy.beans.Jugador">
 		<property name="numero" value="10"></property>
-		<property name="nombre" value="Leonel messi"></property>
+		<property name="nombre" value="Leonel messi"></property> -->
 		<!-- Use @Autowired -->
 		<!-- <property name="equipo" ref="barcelona"></property> -->	
 		
-	</bean>
+<!-- 	</bean>  -->
 	
 	<!-- Use quelifier add  xmlns:context="http://www.springframework.org/schema/context"  -->
-	<bean id="juventus" class="com.jorgejy.beans.Juventus"></bean>
+	<!-- <bean id="juventus" class="com.jorgejy.beans.Juventus"></bean> -->
+	<!--
 	<bean id="bercelona" class="com.jorgejy.beans.Barcelona">
 		<qualifier value="barcelonaQualifier"></qualifier>
 	</bean>
-	
+	 -->
 </beans>

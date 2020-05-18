@@ -3,14 +3,21 @@ package com.jorgejy.beans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import com.jorgejy.interfaces.Equipo;
 
+//required component scan in XML
+// search by id to name class 
+// @Componente("ID-COMPONENT")
+@Component("messi")
 public class Jugador {
 	private int numero;
+	@Value("Messi")
 	private String nombre;
 	@Autowired
-	@Qualifier("barcelonaQualifier")
+	// @Qualifier("barcelonaQualifier")
 	private Equipo equipo;
 	
 	public int getNumero() {
